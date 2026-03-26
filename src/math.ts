@@ -42,3 +42,17 @@ export function clamp(value: number, min: number, max: number): number {
   if (value < min) return min;
   return value;
 }
+
+export function quadratic(
+  a: number,
+  b: number,
+  c: number,
+): Array<number> | null {
+  const discriminant = power(b, 2) - 4 * a * c;
+  if (discriminant < 0) return null;
+  if (discriminant === 0) return [-b / (2 * a)];
+  return [
+    (-b - power(discriminant, 0.5)) / (2 * a),
+    (-b + power(discriminant, 0.5)) / (2 * a),
+  ];
+}

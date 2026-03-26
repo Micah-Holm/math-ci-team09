@@ -8,6 +8,7 @@ import {
   power,
   average,
   clamp,
+  quadratic,
 } from './math';
 
 describe('add', () => {
@@ -80,5 +81,17 @@ describe('clamp', () => {
   });
   it('returns max when number is over max', () => {
     expect(clamp(150, 0, 100)).toBe(100);
+  });
+});
+
+describe('quadratic', () => {
+  it('finds the two roots when there are two', () => {
+    expect(quadratic(3, 4, 1)).toEqual([-1, -1 / 3]);
+  });
+  it('finds a single root', () => {
+    expect(quadratic(2, 4, 2)).toEqual([-1]);
+  });
+  it('returns null when there are no roots', () => {
+    expect(quadratic(1, 0, 1)).toBeNull();
   });
 });
